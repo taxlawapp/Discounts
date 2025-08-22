@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض حصري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@700&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --primary: #2c3e50;
+    --secondary: #e74c3c;
+    --accent: #f39c12;
+    --light: #f8f9fa;
+    --dark: #2c3e50;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --whatsapp: #25D366;
+    --info: #3498db;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Beiruti', sans-serif;
+    background-color: #e1f5fe; 
+    padding: 20px;
+    line-height: 1.8;
+    color: #333;
+    min-height: 100vh;
+    font-size: 16px; /* حجم الخط الفرعي */
+
+      transition: background-color 0.3s, color 0.3s; /* تأثير الانتقال للتغييرات */ 
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+       -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */
+}
+
+.container {
+    max-width: 650px;
+    margin-top: 50px;
+    margin-bottom: 75px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition);
+}
+
+.container:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.ribbon {
+    position: absolute;
+    top: 15px;
+    right: -50px;
+    background-color: var(--accent);
+    color: white;
+    padding: 10px 45px;
+    transform: rotate(45deg);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    font-size: 20px;
+    z-index: 1;
+}
+
+.header {
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header h1 {
+    font-size: 18px; /* حجم الخط الرئيسي */
+    margin-bottom: 2.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.header p {
+    font-size: 18px; /* حجم الخط الفرعي */
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.content {
+    padding: 30px;
+    background-color: white; 
+}
+
+.alert {
+    padding: 18px;
+    border-radius: var(--border-radius);
+    margin-bottom: 2.5px;
+    position: relative;
+    border-right: 5px solid;
+    transition: var(--transition);
+}
+
+.alert:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.alert-warning {
+    background-color: rgba(243, 156, 18, 0.1);
+    border-color: var(--warning);
+}
+
+.alert-success {
+    background-color: rgba(39, 174, 96, 0.1);
+    border-color: var(--success);
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-color: var(--danger);
+}
+
+.alert-info {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: var(--info);
+}
+
+.alert-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: inherit;
+    font-size: 1.1rem;
+}
+
+.alert-title i {
+    margin-left: 10px;
+}
+
+.price-box {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf5 100%);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin: 25px 0;
+    text-align: center;
+    border: 2px dashed #d1d9e6;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.price-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.price-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, var(--accent), var(--danger));
+}
+
+.price {
+    font-size: 1.8rem;
+    color: var(--danger);
+    margin: 3px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.price::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--danger), transparent);
+}
+      
+      
+.price0 {
+    font-size: 1.5rem;
+    color: var(--danger);
+    margin: 3px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.price0::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--danger), transparent);
+}      
+
+.old-price {
+    text-decoration: line-through;
+    color: #777;
+    font-size: 1.8rem;
+    opacity: 0.8;
+}
+
+.discount-badge {
+    background: linear-gradient(to right, var(--danger), var(--accent));
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    gap: 15px;
+}
+
+.countdown-item {
+    text-align: center;
+    min-width: 70px;
+}
+
+.countdown-number {
+    background-color: var(--primary);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.payment-methods {
+    margin-top: 30px;
+}
+
+.payment-methods h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.3rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 20px;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    background-color: rgba(248, 249, 250, 0.7);
+    transition: var(--transition);
+    border: 1px solid #e9ecef;
+    position: relative;
+}
+
+.payment-method:hover {
+    background-color: rgba(248, 249, 250, 1);
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.payment-icon {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+}
+
+.payment-icon i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.payment-details {
+    flex-grow: 1;
+}
+
+.payment-details strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.payment-details div {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: var(--transition);
+    padding: 5px;
+}
+
+.copy-btn:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--light);
+    color: #666;
+    font-size: 0.95rem;
+    border-top: 1px solid #e9ecef;
+}        
+      
+        .subscription-box {
+            margin-top: 5px;
+        }
+
+        .subscription-btn {           
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold; /* وزن النص */
+        }      
+        .Free {
+           margin-top: 0px;
+           background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+           color: white;
+           position: relative;
+           margin-bottom: 1px; 
+        }      
+      
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            z-index: 1001;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+     
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+    
+      
+        .login-container {
+            margin-top: 0px;
+            background: linear-gradient(to right, #e1f5fe, #e1f5fe);
+            padding: 12.5px 15px 5px;
+            border-radius: 15px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border: 2px solid #1a237e; /* إضافة حد */ 
+            position: relative;
+            margin-bottom: 50px;
+        }
+      
+        .login-container h1 {
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 7.5px;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+        }      
+        .login-container h2 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #1a237e, #1a237e); 
+            border-bottom: 3px solid #FFD700; /* إضافة حد */          
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+    .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    background: ; 
+    font-weight: bold;
+    color: #02076e;
+    margin-bottom: 2.5px;
+    font-size: 20px;
+    border: 0px solid #420c0c;
+    margin-top: 0px;      
+        }
+      
+   .form-group input {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    background: #ffffff;
+    outline: none;
+    border-radius: 60px;
+    padding: 6px 20px;
+    font-size: 20px;
+    color: #0e1ba0;
+    height: 45px;
+    border: 2px solid #420c0c;
+    border-radius: 5px;            
+    margin:0px 0; 
+    margin-top: 0px;  
+        }
+ .form-group input:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}     
+        .form-group .fa {
+            position: absolute;
+            left: 10px;
+            top: 67.5%;
+            transform: translateY(-50%);
+            color: #1a237e;
+        }
+
+
+        .user-info {
+            margin-top: 350px;
+            text-align: right;
+            margin-bottom: 0px;          
+        }
+        .user-info p {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+
+            color: #1a237e;
+            font-weight: bold;
+            font-size: 20px;          
+          
+        }
+        .hidden {
+            display: none;
+        }
+        .full-name-display {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #007BFF;
+        }
+      
+#full-name-display {
+    color: #1a237e; /* لون النص */
+    font-weight: bold; /* وزن الخط */  
+    background-color: ; /* خلفية النص */
+    border: 0px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */
+  
+      }       
+      
+ 
+ .button {
+    font-size: 17px; /* حجم الخط */ 
+    font-weight: bold; /* وزن الخط */
+    padding: 7.5px 75px; /* حجم الحشو */
+    margin-top: 5px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */         
+    border: none; /* حذف الحدود */
+    border-radius: 5px; /* تقويس الزوايا */
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+      
+.button:hover {
+    background-color: #1a237e; /* لون خلفية الزر عند التحويم */
+    color: #FFFF00; /* لون النص */  
+    transform: scale(1.05); /* تحجيم الزر عند التحويم */
+    border: 2px solid white; /* إضافة حد عند التحويم */
+  
+}
+
+.button:active {
+    transform: scale(0.95); /* تحجيم الزر عند الضغط */
+}
+
+.button a {
+    text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
+    color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
+}
+      
+#error-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+}
+
+#error-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}
+      
+.hidden {
+    display: none;
+}
+.password-recovery-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.password-recovery-form h3 {
+    margin-bottom: 20px;
+}
+.password-recovery-form .form-group {
+    margin-bottom: 15px;
+}
+.password-recovery-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.password-recovery-form .button {
+    margin-top: 10px;
+    display: block;
+}
+.password-recovery-form .message {
+    margin-top: 10px;
+    color: #1a237e;
+}
+      
+/* نماذج الاسترجاع */
+    #password-recovery-form {
+        display: none;
+        margin-top: 20px;
+        background: linear-gradient(to right, #e1f5fe, #e1f5fe);
+        padding: 15px 15px 10px;
+        border-radius: 15px 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        border: 2px solid #1a237e; /* إضافة حد */ 
+      
+    }
+    .password-recovery-form h3 {
+            margin-bottom: 10px;
+            color: #1a237e;
+            text-align: center;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+    }
+    .password-recovery-form .form-group {
+        margin-bottom: 15px;
+    }
+    .password-recovery-form input {
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold; /* وزن الخط */      
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .password-recovery-form .button {
+        margin-top: 10px;
+        display: block;
+    }
+    .password-recovery-form .message {
+        margin-top: 10px;
+        color: #1a237e;
+    }
+
+      
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #d9534f; /* لون النص */
+}
+
+.close-btn:hover {
+    color: #c9302c; /* لون النص عند التحويم */
+}
+
+.password-recovery-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+#recovery-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;  
+}
+
+#recovery-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}
+
+  
+/* حاوية الرابط */
+.link-container {
+    text-align: left; /* محاذاة النص إلى اليسار */
+}
+
+/* تنسيق الرابط */
+#PasswordRecovery {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#PasswordRecovery :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#PasswordRecovery:active {
+    color: #1a237e; /* لون النص عند النقر */
+}
+
+/* تنسيق الرابط */
+#SignUpLink {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#SignUpLink :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#SignUpLink :active {
+    color: #1a237e; /* لون النص عند النقر */
+}      
+      
+hr {
+    border: none; /* إزالة الحدود الافتراضية */
+    border-top: 3px solid #1a237e; /* تغيير سمك ولون الخط العلوي */
+    margin: 10px 0; /* إضافة هوامش فوق وتحت */
+    margin-bottom: 10px;  
+} 
+      
+        .gold-icon {
+            color: #FFD700; /* لون ذهبي */
+        } 
+      
+/* New styles for sign up form */
+.sign-up-form {
+    z-index: 1000;
+    display: none;
+    margin-top: 0px; /* المسافة من العنصر الأعلى */
+    background: linear-gradient(to right, #e1f5fe, #e1f5fe);
+    padding: 30px;
+    border-radius: 15px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1a237e;
+    position: relative;
+    margin-bottom:50px;
+}
+      
+.sign-up-form h3 {
+            margin-bottom: 10px;
+            color: #1a237e;
+            text-align: center;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #1a237e;
+    text-align: center;
+    font-size: 20px
+     
+}
+      
+ .form-group select:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}       
+      
+.sign-up-form .form-group {
+    margin-bottom: 15px;
+}
+.sign-up-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.sign-up-form .button {
+    margin-top: 10px;
+    display: block;
+}
+.sign-up-form .message {
+    margin-top: 10px;
+    color: #1a237e;
+}
+      
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #d9534f;
+}
+.close-btn:hover {
+    color: #c9302c;
+}      
+
+#signup-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;  
+}
+
+#signup-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}       
+      
+      
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 100%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }      
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 22px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 16px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 17px;
+            position: sticky;
+            top: 0;
+        }
+        /* تلوين العمود الأول بنفس لون الصف الأول */
+        td:first-child {
+            background-color: #3498db;
+            color: white;
+        }
+        /* تعديل لون الأيقونات في العمود الأول */
+        td:first-child i {
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+        tr:hover {
+            background-color: #f1f8fe;
+        }
+        .highlight {
+            background-color: #e3f2fd;
+            font-weight: bold;
+        }
+        .save-row {
+            background-color: #e8f5e9;
+        }
+        .first-col {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .package-icon {
+            color: white;
+            font-size: 1.3em;
+        }
+        .table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .fa-table {
+            margin-left: 10px;
+            color: #3498db;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 12px 8px;
+                font-size: 14px;
+            }
+        }      
+    </style>
+</head>
+<body>
+  
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='go:home'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        عرض حصري | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>  
+  
+    <div class="container">
+        <div class="ribbon">عرض حصري!</div>
+        
+        <div class="header">
+            <div class="logo">
+                        <img src="https://www3.0zz0.com/2024/05/30/07/482205963.png" alt="Icon" style="vertical-align: middle; width: 70px; height: 70px; margin-right: 0px;">
+            </div>
+            <h1 style="font-size:30px; font-weight:bold; text-align:center;">Tax Law App</h1>
+            <p style="font-size:18px; font-weight:bold; text-align:center;">التطبيق رقم (1) لإحتساب الضريبة فـ مصر 🇪🇬</p>          
+            <p style="font-size:18px; font-weight:bold; text-align:center;">خصومات حصرية 50% علي جميع باقات الإشتراك فـ التطبيق</p>
+        </div>
+        
+        <div class="content">
+            <div class="alert alert-warning">
+                <div class="price0" style="font-size:20px; font-weight:bold; text-align:center;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    خصم 50%  :
+                </div>
+                <p style="font-size:18px; font-weight:bold; text-align:center;">خصومات حصرية 50% علي جميع باقات الإشتراك فـ التطبيق أو تجديد الإشتراك المنتهي من اليوم الجمعة الموافق 22/08/2025 وحتي يوم الأثنين الموافق 25/08/2025</p>
+                <p class="price">إشترك بخصم 50%🔥👌</p>              
+            </div>
+            
+            <div class="price-box">
+                <h1 class="price">باقات الإشتراك / التجديد</h1>
+<table id="packagesTable" border="1">
+    <thead>
+        <tr>
+            <th><div class="first-col"> البيان / الباقات</div></th>
+            <th><div class="first-col"> باقة شهرية</div></th>
+            <th><div class="first-col"> باقة نصف سنوية</div></th>
+            <th><div class="first-col"> باقة سنوية</div></th>
+            <th><div class="first-col"> باقة مدى الحياة</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="first-col"> التكلفة الإجمالية</div></td>
+            <td>199.99 جنية</td>
+            <td>599.99 جنية</td>
+            <td>999.99 جنية</td>
+            <td>1999.99 جنية</td>
+        </tr>
+        <tr>
+            <td><div class="first-col"> الفترة السارية</div></td>
+            <td>1 شهر</td>
+            <td>6 أشهر</td>
+            <td>12 شهر</td>
+            <td>مدى الحياة</td>
+        </tr>
+        <tr class="save-row">
+            <td><div class="first-col"> نسبة الخصم (%)</div></td>
+            <td>50%</td>
+            <td>50%</td>
+            <td>50%</td>
+            <td>50%</td>
+        </tr>
+        <tr>
+            <td><div class="first-col"> التكلفة بعد الخصم </div></td>
+            <td>99.99 جنية</td>
+            <td>299.99 جنية</td>
+            <td>499.99 جنية</td>
+            <td>999.99 جنية</td>
+        </tr>
+    </tbody>
+</table>
+
+                    <p><i class="price fas fa-exclamation-triangle" style="color: var(--danger);"></i> العرض ساري 22 - 25 أغسطس فقط</p>
+            </div>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">03</div>
+                    <div class="countdown-label">أيام</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">23</div>
+                    <div class="countdown-label">ساعات</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">59</div>
+                    <div class="countdown-label">دقائق</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">59</div>
+                    <div class="countdown-label">ثواني</div>
+                </div>
+            </div>
+          
+          
+        <div class="subscription-box">
+            <button href="javascript:void(0);" class="subscription-btn Free" onclick="openSignUpForm('Free')"><i class="fas fa-external-link-alt"></i> إشترك / جدد الآن بخصم 50%</button>
+        </div>  
+<!-- نموذج إنشاء حساب جديد -->
+<div class="sign-up-form" id="sign-up-form" style="display: none;">
+    <span class="close-btn" onclick="toggleSignUpForm()">❌</span>
+    <h3>إنشاء حساب جديد</h3>
+
+    <div class="form-group">
+        <label for="signup-username">إسم المستخدم :</label>
+        <input type="text" id="signup-username">
+        <i class="fa fa-user"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-password">كلمة المرور :</label>
+        <input type="password" id="signup-password">
+        <i class="fa fa-lock"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-confirm-password">تأكيد كلمة المرور :</label>
+        <input type="password" id="signup-confirm-password">
+        <i class="fa fa-lock"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-fullname">الإسم رباعي :</label>
+        <input type="text" id="signup-fullname">
+        <i class="fa fa-user"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-email">البريد الإلكتروني :</label>
+        <input type="email" id="signup-email">
+        <i class="fa fa-envelope"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-phone">رقم الهاتف :</label>
+        <input type="number" id="signup-phone">
+        <i class="fa fa-phone"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-date">تاريخ الاشتراك :</label>
+        <input type="text" id="signup-date" value="" readonly>
+        <i class="fa fa-calendar"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-package">باقة الاشتراك / التجديد :</label>
+        <select id="signup-package">
+            <option value="باقة شهرية ( بتكلفة 99.99 جنية بدلاً من 199.99 جنية | صالحة لمدة شهر بخصم 50% )">باقة شهرية ( بتكلفة 99.99 جنية بدلاً من 199.99 جنية | صالحة لمدة شهر بخصم 50% )</option>  
+            <option value="باقة نصف سنوية ( بتكلفة 299.99 جنية بدلاً من 599.99 جنية | صالحة لمدة 6 أشهر بخصم 50% )">باقة نصف سنوية ( بتكلفة 299.99 جنية بدلاً من 599.99 جنية | صالحة لمدة 6 أشهر بخصم 50% )</option>  
+            <option value="باقة سنوية ( بتكلفة 499.99 جنية بدلاً من 999.99 جنية | صالحة لمدة 12 شهر بخصم 50% )">باقة سنوية ( بتكلفة 499.99 جنية بدلاً من 999.99 جنية | صالحة لمدة 12 شهر بخصم 50% )</option>  
+            <option value="باقة مدي الحياة ( بتكلفة 999.99 جنية بدلاً من 1999.99 جنية لمرة واحدة | صالحة مدي الحياة بخصم 50% )">باقة مدي الحياة ( بتكلفة 999.99 جنية بدلاً من 1999.99 جنية لمرة واحدة | صالحة مدي الحياة بخصم 50% )</option>                  
+        </select>
+        <i class=""></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-code">كود إحالة صديقك (إن وجد) :</label>
+        <input type="text" id="signup-code">
+        <i class="fa fa-qrcode"></i>
+    </div>
+    <a onclick="signUp()" class="button"><i class="fas fa-paper-plane"></i> إرسال</a>
+    <div class="message" id="signup-message"></div>
+</div>          
+            
+            <div class="payment-methods">
+                <h1>طرق الدفع المتاحة :</h1>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <img src="https://www2.0zz0.com/2025/08/14/20/309641662.jpg" alt="Icon" style="vertical-align: middle; width: 36px; height: 36px; margin-right: 0px;">                    </div>
+                    <div class="payment-details">
+                        <strong class="price0">ڤودافون كاش</strong>
+                        <div class="payment-value" style="font-size:20px; font-weight:bold">01030069322</div>
+                    </div>
+                    <button class="copy-btn" data-value="01030069322">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <img src="https://www2.0zz0.com/2025/08/14/20/868990802.jpg" alt="Icon" style="vertical-align: middle; width: 36px; height: 36px; margin-right: 0px;">
+                    </div>
+                    <div class="payment-details">
+                        <strong class="price0">إنستاباي</strong>
+                        <div class="payment-value" style="font-size:16.5px; font-weight:bold">mahmoudrizk16@instapay</div>
+                    </div>
+                    <button class="copy-btn" data-value="mahmoudrizk16@instapay">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="alert alert-danger" style="margin-top: 12.5px; margin-bottom: 2.5px;">
+                <div class="price0">
+                    <i class="fas fa-clock"></i>
+                    تنبيه هام :
+                </div>
+                <p style="font-size:18px; font-weight:bold; text-align:center;">هذا العرض ساري لمدة محدودة فقط حتى 25 أغسطس 2025.</p>
+            </div>
+        </div>
+ 
+
+      
+    </div>
+
+<div class="navbar">
+    <a href="https://chat.whatsapp.com/CdbylNPvwdR4zqK2GcjK0t" class="nav-item">
+        <i class="fab fa-whatsapp icon"></i> <!-- أيقونة واتساب الأصلية -->
+        <span>واتساب</span>
+    </a>
+    <a href="https://www.facebook.com/TaxLawApp" class="nav-item">
+        <i class="fab fa-facebook icon"></i> <!-- أيقونة فيسبوك الأصلية -->
+        <span>فيسبوك</span> <!-- تغيير النص ليكون أكثر وضوحاً -->
+    </a>     
+    <a href="https://play.google.com/store/apps/details?id=com.mrizk.taxlawapp" class="nav-item home">
+        <i class="fas fa-download icon"></i> <!-- أيقونة تحميل بدلاً من البيت -->
+        <span>تحميل التطبيق</span> <!-- نص أكثر وضوحاً -->
+    </a>
+    <a href="https://youtube.com/@TaxLawApp" class="nav-item">
+        <i class="fab fa-youtube icon"></i> <!-- أيقونة يوتيوب صحيحة -->
+        <span>يوتيوب</span> <!-- نص عربي واضح -->
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.mrizk.taxlawapp" class="nav-item">
+        <i class="fas fa-star icon"></i> <!-- أيقونة تقييم مناسبة -->
+        <span>قيم التطبيق</span> <!-- نص واضح -->
+    </a>      
+</div>
+
+    <script>
+// دالة النسخ المعدلة
+function setupCopyButtons() {
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const textToCopy = button.getAttribute('data-value');
+            
+            // طريقة بديلة تعمل على جميع المتصفحات
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            textarea.style.position = 'fixed';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                // تغيير مؤقت للأيقونة للإشارة إلى نجاح النسخ
+                const icon = button.querySelector('i');
+                icon.classList.remove('fa-copy');
+                icon.classList.add('fa-check');
+                
+                setTimeout(() => {
+                    icon.classList.remove('fa-check');
+                    icon.classList.add('fa-copy');
+                }, 1000);
+            } catch (err) {
+                console.error('فشل في النسخ:', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        });
+    });
+}
+
+// عداد تنازلي
+function updateCountdown() {
+    const now = new Date();
+    const targetDate = new Date('2025-08-25T23:59:59');
+    const diff = targetDate - now;
+    
+    // إذا انتهى العرض ولم ننشئ الرسالة بعد
+    if (diff <= 0 && !document.querySelector('.expired-message')) {
+        // إخفاء المحتوى الرئيسي
+        document.querySelector('.container').style.display = 'none';
+        
+        // إخفاء زر الاشتراك
+        const subscriptionBtn = document.querySelector('.subscription-btn.Free');
+        if (subscriptionBtn) {
+            subscriptionBtn.style.display = 'none';
+        }
+        
+// إنشاء رسالة انتهاء العرض وإضافتها للصفحة
+const expiredMessage = document.createElement('div');
+expiredMessage.className = 'expired-message';
+expiredMessage.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+`;
+
+expiredMessage.innerHTML = `
+    <div style="
+        text-align: center; 
+        padding: 40px 20px; 
+        background: #fff; 
+        border-radius: 12px; 
+        max-width: 300px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        border: 2px solid #e74c3c;
+    ">
+        <h2 class="price fas fa-exclamation-triangle" style="color: #e74c3c; font-size: 30px; margin-bottom: 5px;">انتهى العرض!</h2>
+        <p style="font-size: 20px; margin-bottom: 5px; color: #555;">عذراً، لقد انتهت فترة خصم الـ 50%.</p>
+        <p style="font-size: 18px; color: #3498db; margin-bottom: 2.5px;">تابع التطبيق يوميا لمعرفة العروض القادمة.</p>
+        <div style="margin-top: 12.5px;">
+            <i class="fas fa-phone-alt" style="color: #2ecc71; margin-right: 5px;"></i>
+            <span class="price0" style="color: #e74c3c;">للاستفسار :  01030069322</span>
+        </div>
+    </div>
+`;
+document.body.appendChild(expiredMessage);
+        
+        return;
+    }
+    
+    // إذا لم ينته العرض بعد، نواصل تحديث العداد
+    if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+}
+
+// استدعاء الدوال عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    setupCopyButtons();
+    updateCountdown();
+});
+
+// تحديث العداد كل ثانية
+setInterval(updateCountdown, 1000);
+    </script>
+    <script>      
+// دالة لفتح نموذج التسجيل مع تحديد الباقة المناسبة
+function openSignUpForm(packageType) {
+    // عند تحميل النموذج جعل المسافة السلفية للزر المجاني 5
+    const freeElement = document.querySelector('.Free');
+    if (freeElement) {
+        freeElement.style.marginBottom = '5px';
+    }
+    // عرض نموذج التسجيل
+    document.getElementById('sign-up-form').style.display = 'block';
+
+    // قراءة بيانات المستخدم من localStorage
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    // ملء الحقول بالقيم المخزنة في localStorage إذا كان المستخدم مسجلاً
+    if (user) {
+        document.getElementById('signup-username').value = user.username || '';
+        document.getElementById('signup-password').value = user.password || '';
+        document.getElementById('signup-confirm-password').value = user.password || ''; // نضع كلمة المرور نفسها لتأكيدها
+        document.getElementById('signup-fullname').value = user.fullName || '';
+        document.getElementById('signup-email').value = user.email || '';
+        document.getElementById('signup-phone').value = user.phoneNumber || '';
+    }
+
+    // تعيين تاريخ اليوم تلقائيًا في حقل تاريخ الاشتراك
+    const signupDateField = document.getElementById('signup-date');
+    const today = new Date();
+    
+    // الحصول على اليوم، الشهر، والسنة
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // الشهور تبدأ من 0
+    const year = today.getFullYear(); // السنة كاملة
+    
+    // تنسيق التاريخ إلى dd/mm/yyyy
+    const formattedDate = `${day}/${month}/${year}`;
+    signupDateField.value = formattedDate;  
+  
+    // وضع التركيز على حقل اسم المستخدم
+    const usernameInput = document.getElementById('signup-username');
+    if (usernameInput) {
+        usernameInput.focus();
+    }
+    
+    // إخفاء رسالة الخطأ
+    const messageInput = document.getElementById("signup-message");
+    if (messageInput) {
+        messageInput.style.display = 'none';
+    }
+
+    // استهداف القائمة المنسدلة
+    var select = document.getElementById("signup-package");
+
+
+  
+
+
+    // إضافة الخيار المناسب بناءً على الزر الذي تم الضغط عليه
+    if (packages[packageType]) {
+        var option = document.createElement("option");
+        option.value = packages[packageType].value;
+        option.textContent = packages[packageType].text;
+        select.appendChild(option);
+    }
+}
+
+
+
+// دالة لإغلاق نموذج التسجيل
+function toggleSignUpForm() {
+    const form = document.getElementById('sign-up-form');
+    const freeElement = document.querySelector('.Free');
+
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        if (freeElement) {
+            freeElement.style.marginBottom = '5px'; // عند فتح النموذج
+        }
+    } else {
+        form.style.display = 'none';
+        if (freeElement) {
+            freeElement.style.marginBottom = '50px'; // عند إغلاق النموذج
+        }
+    }
+}
+
+     
+      
+function signUp() {
+    const usernameInput = document.getElementById("signup-username");
+    const passwordInput = document.getElementById("signup-password");
+    const confirmPasswordInput = document.getElementById("signup-confirm-password");
+    const fullnameInput = document.getElementById("signup-fullname");
+    const emailInput = document.getElementById("signup-email");
+    const phoneInput = document.getElementById("signup-phone");
+    const packageInput = document.getElementById("signup-package");
+    const messageInput = document.getElementById("signup-message");
+    const codeInput = document.getElementById("signup-code");
+
+    function hideMessage() {   
+        messageInput.style.display = 'none';
+    }
+
+    // إضافة مستمعين للأحداث لإخفاء الرسائل عند التعديل
+    usernameInput.addEventListener('input', hideMessage);
+    passwordInput.addEventListener('input', hideMessage);
+    confirmPasswordInput.addEventListener('input', hideMessage);
+    fullnameInput.addEventListener('input', hideMessage);
+    emailInput.addEventListener('input', hideMessage);
+    phoneInput.addEventListener('input', hideMessage);
+    packageInput.addEventListener('input', hideMessage);
+    codeInput.addEventListener('input', hideMessage);
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+    const fullname = fullnameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const package = packageInput.value.trim();
+    const code = codeInput.value.trim();
+
+    messageInput.style.display = 'none';
+    usernameInput.style.borderColor = '#420c0c';
+    passwordInput.style.borderColor = '#420c0c';
+
+    if (!username) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> إسم المستخدم مطلوب';
+        messageInput.style.display = 'block';
+        usernameInput.focus();
+        return;
+    }
+    if (!password) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> كلمة المرور مطلوبة';
+        messageInput.style.display = 'block';
+        passwordInput.focus();
+        return;
+    }
+    if (!confirmPassword) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> تأكيد كلمة المرور مطلوب';
+        messageInput.style.display = 'block';
+        confirmPasswordInput.focus();
+        return;
+    }
+    if (password !== confirmPassword) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> كلمة المرور غير متطابقة';
+        messageInput.style.display = 'block';
+        confirmPasswordInput.focus();
+        return;
+    }
+    if (!fullname) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> الإسم رباعي مطلوب';
+        messageInput.style.display = 'block';
+        fullnameInput.focus();
+        return;
+    }
+    if (fullname.split(" ").length < 4) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يجب أن يحتوي الإسم الكامل على أربعة مقاطع';
+        messageInput.style.display = 'block';
+        fullnameInput.focus();
+        return;
+    }
+    if (!email) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> البريد الإلكتروني مطلوب';
+        messageInput.style.display = 'block';
+        emailInput.focus();
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> البريد الإلكتروني غير صالح';
+        messageInput.style.display = 'block';
+        emailInput.focus();
+        return;
+    }
+    if (!phone) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> رقم الهاتف مطلوب';
+        messageInput.style.display = 'block';
+        phoneInput.focus();
+        return;
+    }
+    if (!/^01\d{9}$/.test(phone)) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> رقم الهاتف يجب أن يبدأ ب 01 ويحتوي على 11 رقمًا';
+        messageInput.style.display = 'block';
+        phoneInput.focus();
+        return;
+    }  
+  
+    // افتراض نجاح التسجيل
+    const signupDate = document.getElementById("signup-date").value.trim();
+    const messageContent = `إسم المستخدم : ${username}\nكلمة المرور : ${password}\nالإسم رباعي : ${fullname}\nالبريد الإلكتروني : ${email}\nرقم الهاتف : ${phone}\nتاريخ الاشتراك : ${signupDate}\nنظام الاشتراك : ${package}\nكود إحالة صديقك : ${code}\nمعلومات الدفع : يتم دفع الإشتراك إما من خلال 1- محفظة ڤودافون كاش علي الرقم التالي : ( 01030069322 ) 2- تطبيق إنستا باي علي عنوان الدفع التالي : ( mahmoudrizk16@instapay ) 3- أي تطبيق بنكي آخر محافظ إلكترونية وحسابات علي الرقم التالي : ( 01030069322 ) وإرسال صورة إيصال الدفع لتفعيل الإشتراك الخاص بك .. وإرسال طلب إنضمام إلي جروب المشتركين : https://chat.whatsapp.com/FeGm9uVP4htHLivKimr5Ey | يرجي العلم أن صلاحية الطلب  ساعة فقط ولن يتم تفعيل الإشتراك إلا من خلال صورة إيصال الدفع الخاص بك.`;
+
+    // URL افتراضي لمثال
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=201030069322&text=${encodeURIComponent(messageContent)}`;
+    window.open(whatsappUrl, '_blank');
+
+    messageInput.innerHTML = '<i class="fas fa-check-circle"></i> تم إرسال البيانات بنجاح';
+    messageInput.style.color = '#28a745'; // لون أخضر للنجاح
+    messageInput.style.display = 'block';
+
+    // مسح الحقول بعد عرض رسالة النجاح
+    usernameInput.value = '';
+    passwordInput.value = '';
+    confirmPasswordInput.value = '';
+    fullnameInput.value = '';
+    emailInput.value = '';
+    phoneInput.value = '';
+    packageInput.value = '';
+    codeInput.value = '';
+    document.getElementById("signup-date").value = '';
+
+    // إغلاق نموذج التسجيل بعد التأكيد
+    setTimeout(() => {
+        toggleSignUpForm();
+    }, 2000);
+}      
+            
+  </script>
+
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script>  
+</body>
+</html>
